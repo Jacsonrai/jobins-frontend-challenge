@@ -1,0 +1,29 @@
+@import "../assets//styles/abstract/variables";
+.page-not-found-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h3 {
+        font-size: 20rem;
+        font-weight: $font-weight-bold;
+        margin-bottom: -4rem;
+    }
+    h6 {
+        font-size: $font-size-xlarge;
+        font-size: $font-size-large;
+    }
+    button {
+        outline: none;
+        border: none;
+        font-size: $font-size-large;
+        padding: 1rem 2rem;
+        border-radius: 2rem;
+        color: $color-success;
+        cursor: pointer;
+        &:hover {
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+    }
+}

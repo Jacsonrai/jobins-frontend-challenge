@@ -1,0 +1,24 @@
+@import "../assets/styles/abstract/variables";
+.error-fall-back-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    flex-direction: column;
+}
+.error-title {
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
+    line-height: 18px;
+}
+.error-description {
+    font-size: $font-size-large;
+    font-weight: $font-weight-normal;
+    line-height: 18px;
+}
+.error-message {
+    font-size: $font-size-base;
+    font-weight: $font-weight-normal;
+    line-height: 18px;
+    color: $color-error;
+}
