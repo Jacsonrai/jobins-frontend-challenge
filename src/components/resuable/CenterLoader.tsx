@@ -8,8 +8,7 @@ const rotateAnimation = keyframes`
   }
 `;
 
-// Create the StyledLoader component
-export const StyledLoader = styled.div<{
+const StyledLoader = styled.div<{
     $inputColor?: string;
     $width?: string;
 }>`

@@ -1,10 +1,9 @@
 import "./errorfallback.scss";
-interface ErrorFallBack {
+interface ErrorFallBackProps {
     error?: Error;
     resetErrorBoundries?: () => void;
 }
-export const ErrorFallBack = ({ error }: ErrorFallBack) => {
-    console.log(error, "error");
+export const ErrorFallBack = ({ error }: ErrorFallBackProps) => {
     return (
         <div className="error-fall-back-container">
             <p className="error-title"> Whoops,Something went wrong:</p>

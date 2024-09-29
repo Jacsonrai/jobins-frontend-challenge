@@ -6,12 +6,15 @@ import { ErrorFallBack } from "./components/ErrorFallBack";
 import CenterLoader from "./components/resuable/CenterLoader";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./provider/routeprovider";
+import { PageProvider } from "./provider/pageprovider";
 
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
         <ErrorBoundary FallbackComponent={ErrorFallBack}>
             <Suspense fallback={<CenterLoader />}>
-                <RouterProvider router={router} />
+                <PageProvider>
+                    <RouterProvider router={router} />
+                </PageProvider>
             </Suspense>
         </ErrorBoundary>
     </StrictMode>

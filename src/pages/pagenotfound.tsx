@@ -1,13 +1,24 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./pagenotfound.scss";
+import { usePageHook } from "../hooks/usepagehook";
+import { useEffect } from "react";
+
 const PageNotFound = () => {
+    const { dispatch } = usePageHook();
+    const navigate = useNavigate();
+    useEffect(() => {
+        dispatch({ type: "CLOSE_DRAWER" });
+    }, []);
+    const onClickDahsboard = () => {
+        dispatch({ type: "OPEN_DRAWER" });
+        navigate("/");
+    };
+
     return (
         <div className="page-not-found-container">
             <h3>404</h3>
             <h6>Sorry the page you tried cannot be found</h6>
-            <Link to={"/"}>
-                <button>Dashboard</button>
-            </Link>
+            <button onClick={onClickDahsboard}>Dashboard</button>
         </div>
     );
 };
