@@ -10,3 +10,7 @@ export interface MainLayoutProps {
 export interface PageState {
     openDrawer: boolean;
 }
+export interface IconProps {
+    width?: number | string;
+    height?: number | string;
+}

@@ -20,6 +20,14 @@ export default tseslint.config(
         rules: {
             ...reactHooks.configs.recommended.rules,
             "react-hooks/exhaustive-deps": "off",
+            "no-unused-vars": [
+                "error",
+                {
+                    varsIgnorePattern: "^_", // Ignore variables that start with an underscore
+                    args: "after-used", // Check function arguments
+                    argsIgnorePattern: "^_", // Ignore function arguments that start with an underscore
+                },
+            ],
         },
     }
 );

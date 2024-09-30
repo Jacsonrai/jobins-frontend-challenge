@@ -1,0 +1,57 @@
+@import "../../assets/styles/abstract/variables";
+.side-drawer-container {
+    padding: 0 20px;
+    .side-drawer-logo-collapse-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            h3 {
+                font-size: 22px;
+                font-weight: $font-weight-bold;
+            }
+            .logo-img {
+                background-color: $color-primary;
+                width: 30px;
+                height: 25px;
+                border-radius: 8px;
+                position: relative;
+                img {
+                    height: 16px;
+                    width: 15px;
+                    object-fit: cover;
+                    position: absolute;
+                    top: 4px;
+                    left: 7px;
+                }
+            }
+        }
+    }
+    .side-drawer-side-items-container {
+        .side-drawer-main-menu-container {
+            p {
+                margin-left: 14px;
+                font-size: $font-size-small;
+                text-transform: uppercase;
+                color: $color-light-text;
+            }
+        }
+        .side-drawer-products-container {
+            p {
+                margin-left: 14px;
+                font-size: $font-size-small;
+                text-transform: uppercase;
+                color: $color-light-text;
+            }
+        }
+        .side-drawer-item-list-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+}
