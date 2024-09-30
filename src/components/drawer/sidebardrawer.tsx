@@ -23,6 +23,7 @@ const StyleSidebarDrawer = styled("div").withConfig({
     width: props.width ?? "20rem",
     top: 0,
     position: "fixed",
+    transition: "width 0.7s ease-in-out",
 }));
 const StyledLink = styled(Link).withConfig({
     shouldForwardProp: (prop) => prop !== "selected",
@@ -50,68 +51,86 @@ const SidebarDrawer = () => {
     const currentActivePath = location.pathname;
     useEffect(() => {
         dispatch({ type: "OPEN_DRAWER" });
+        dispatch({ type: "NO_PAGE_FOUND_TRIGGER", payload: false });
     }, [location]);
+    const handleCloseDrawer = () => {
+        dispatch({ type: "CLOSE_DRAWER" });
+    };
+
     return (
-        <StyleSidebarDrawer width={state.openDrawer ? "20rem" : 0}>
+        <StyleSidebarDrawer width={state.openDrawer ? "20rem" : "4rem"}>
             <div className="side-drawer-container">
                 <div className="side-drawer-logo-collapse-container">
                     <div className="logo-container">
-                        <div className="logo-img">
+                        <div
+                            className={
+                                state?.openDrawer
+                                    ? "logo-img"
+                                    : "logo-img-minimized"
+                            }
+                        >
                             <img src="logo.png" />
                         </div>
                         <h3>JoBins</h3>
                     </div>
-                    <IconButton
-                        type="button"
-                        onClick={() => console.log("hello")}
-                    >
+                    <IconButton type="button" onClick={handleCloseDrawer}>
                         <IndentIcon width={24} height={24} />
                     </IconButton>
                 </div>
-                <div className="side-drawer-side-items-container">
-                    <div className="side-drawer-main-menu-container">
-                        <p>Main menu</p>
-                        <div className="side-drawer-item-list-container">
-                            {SideBarItems?.filter(
-                                (item) => item.type === "main"
-                            ).map((item, index) => (
-                                <StyledLink
-                                    to={item.path}
-                                    selected={
-                                        currentActivePath === item.path
-                                            ? true
-                                            : false
-                                    }
-                                    key={index}
-                                >
-                                    <item.icon width={22} height={22} />
-                                    {item.name}
-                                </StyledLink>
-                            ))}
+                {state?.openDrawer ? (
+                    <div className="side-drawer-side-items-container">
+                        <div className="side-drawer-main-menu-container">
+                            <p>Main menu</p>
+                            <div className="side-drawer-item-list-container">
+                                {SideBarItems?.filter(
+                                    (item) => item.type === "main"
+                                ).map((item, index) => (
+                                    <StyledLink
+                                        to={item.path}
+                                        selected={
+                                            currentActivePath === item.path
+                                                ? true
+                                                : false
+                                        }
+                                        key={index}
+                                    >
+                                        <item.icon width={22} height={22} />
+                                        {item.name}
+                                    </StyledLink>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="side-drawer-products-container">
+                            <p>products</p>
+                            <div className="side-drawer-item-list-container">
+                                {SideBarItems?.filter(
+                                    (item) => item.type === "product"
+                                ).map((item, index) => (
+                                    <StyledLink
+                                        to={item.path}
+                                        selected={
+                                            currentActivePath === item.path
+                                                ? true
+                                                : false
+                                        }
+                                        key={index}
+                                    >
+                                        <item.icon width={22} height={22} />
+                                        {item.name}
+                                    </StyledLink>
+                                ))}
+                            </div>
                         </div>
                     </div>
-                    <div className="side-drawer-products-container">
-                        <p>products</p>
-                        <div className="side-drawer-item-list-container">
-                            {SideBarItems?.filter(
-                                (item) => item.type === "product"
-                            ).map((item, index) => (
-                                <StyledLink
-                                    to={item.path}
-                                    selected={
-                                        currentActivePath === item.path
-                                            ? true
-                                            : false
-                                    }
-                                    key={index}
-                                >
-                                    <item.icon width={22} height={22} />
-                                    {item.name}
-                                </StyledLink>
-                            ))}
-                        </div>
+                ) : (
+                    <div className="side-bar-minimized-container">
+                        {SideBarItems?.map((item, index) => (
+                            <IconButton key={index}>
+                                <item.icon width={25} height={25} />
+                            </IconButton>
+                        ))}
                     </div>
-                </div>
+                )}
             </div>
         </StyleSidebarDrawer>
     );

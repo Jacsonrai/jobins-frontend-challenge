@@ -7,7 +7,7 @@ const PageNotFound = () => {
     const { dispatch } = usePageHook();
     const navigate = useNavigate();
     useEffect(() => {
-        dispatch({ type: "CLOSE_DRAWER" });
+        dispatch({ type: "NO_PAGE_FOUND_TRIGGER", payload: true });
     }, []);
     const onClickDahsboard = () => {
         dispatch({ type: "OPEN_DRAWER" });

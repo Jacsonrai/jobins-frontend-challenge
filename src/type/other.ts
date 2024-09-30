@@ -9,6 +9,7 @@ export interface MainLayoutProps {
 }
 export interface PageState {
     openDrawer: boolean;
+    noPageStatus: boolean;
 }
 export interface IconProps {
     width?: number | string;

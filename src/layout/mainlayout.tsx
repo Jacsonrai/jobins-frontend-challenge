@@ -18,7 +18,9 @@ const StyledMainLayout = styled("div").withConfig({
 const MainLayout = ({ children }: MainLayoutProps) => {
     const { state } = usePageHook();
     return (
-        <StyledMainLayout width={state.openDrawer ? "20rem" : 0}>
+        <StyledMainLayout
+            width={state.noPageStatus ? 0 : state.openDrawer ? "20rem" : "4rem"}
+        >
             {children}
         </StyledMainLayout>
     );
