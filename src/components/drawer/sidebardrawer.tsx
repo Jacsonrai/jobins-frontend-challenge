@@ -1,11 +1,13 @@
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { usePageHook } from "../../hooks/usepagehook";
-import { useEffect } from "react";
 import "./sidebardrawer.scss";
 import IndentIcon from "../icons/indenticon";
 import IconButton from "../resuable/iconbutton";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { SideBarItems } from "./sidebaritem";
+import ToolTip from "../resuable/tooltip";
+import Indenticonright from "../icons/indenticonrighticon";
 
 interface SidebarProps extends React.HTMLProps<HTMLDivElement> {
     bgcolor?: string;
@@ -13,6 +15,7 @@ interface SidebarProps extends React.HTMLProps<HTMLDivElement> {
 }
 interface LinkProps {
     selected?: boolean;
+    open?: boolean;
 }
 
 const StyleSidebarDrawer = styled("div").withConfig({
@@ -23,20 +26,25 @@ const StyleSidebarDrawer = styled("div").withConfig({
     width: props.width ?? "20rem",
     top: 0,
     position: "fixed",
-    transition: "width 0.7s ease-in-out",
+    transition: "width 0.2s ease-in-out",
+    zIndex: 100,
 }));
+
 const StyledLink = styled(Link).withConfig({
-    shouldForwardProp: (prop) => prop !== "selected",
+    shouldForwardProp: (prop) => prop !== "selected" && prop !== "open",
 })<LinkProps>((props) => ({
     color: props.selected ? "rgba(35, 39, 46, 1)" : "rgba(139, 144, 154, 1)",
     fontSize: "16px",
     display: "flex",
+    opacity: props.open ? 1 : 0,
+    visibility: props.open ? "visible" : "hidden",
     alignItems: "center",
     textDecoration: "none",
     textTransform: "capitalize",
     backgroundColor: props.selected ? "rgba(243, 244, 248, 1)" : "transparent",
     padding: "9px 16px",
     borderRadius: "6px",
+    transition: "opacity 0.9s ease-in-out, visibility 0.3s ease-in-out",
     fontWeight: props?.selected ? 600 : 500,
     gap: "8px",
     "&:hover": {
@@ -49,12 +57,25 @@ const SidebarDrawer = () => {
     const { state, dispatch } = usePageHook();
     const location = useLocation();
     const currentActivePath = location.pathname;
+    const navigate = useNavigate();
+    const [showLinks, setShowLinks] = useState(false);
+
     useEffect(() => {
-        dispatch({ type: "OPEN_DRAWER" });
-        dispatch({ type: "NO_PAGE_FOUND_TRIGGER", payload: false });
-    }, [location]);
+        let timeout: NodeJS.Timeout;
+        if (state.openDrawer) {
+            timeout = setTimeout(() => setShowLinks(true), 100);
+        } else {
+            setShowLinks(false);
+        }
+
+        return () => clearTimeout(timeout);
+    }, [state.openDrawer]);
+
     const handleCloseDrawer = () => {
         dispatch({ type: "CLOSE_DRAWER" });
+    };
+    const handleOpenDrawer = () => {
+        dispatch({ type: "OPEN_DRAWER" });
     };
 
     return (
@@ -62,20 +83,41 @@ const SidebarDrawer = () => {
             <div className="side-drawer-container">
                 <div className="side-drawer-logo-collapse-container">
                     <div className="logo-container">
-                        <div
-                            className={
-                                state?.openDrawer
-                                    ? "logo-img"
-                                    : "logo-img-minimized"
-                            }
-                        >
-                            <img src="logo.png" />
-                        </div>
-                        <h3>JoBins</h3>
+                        <Link to="/">
+                            <div
+                                className={
+                                    state?.openDrawer
+                                        ? "logo-img"
+                                        : "logo-img-minimized"
+                                }
+                            >
+                                <img src="logo.png" alt="Logo" />
+                            </div>
+                        </Link>
+
+                        {state.openDrawer && <p>JoBins</p>}
                     </div>
-                    <IconButton type="button" onClick={handleCloseDrawer}>
-                        <IndentIcon width={24} height={24} />
-                    </IconButton>
+                    {state.openDrawer ? (
+                        <IconButton type="button" onClick={handleCloseDrawer}>
+                            <IndentIcon width={24} height={24} />
+                        </IconButton>
+                    ) : (
+                        <div
+                            style={{
+                                position: "fixed",
+                                left: "70px",
+                                top: "7px",
+                            }}
+                        >
+                            <IconButton
+                                type="button"
+                                bgcolor="rgba(255, 255, 255, 1)"
+                                onClick={handleOpenDrawer}
+                            >
+                                <Indenticonright width={24} height={24} />
+                            </IconButton>
+                        </div>
+                    )}
                 </div>
                 {state?.openDrawer ? (
                     <div className="side-drawer-side-items-container">
@@ -89,10 +131,9 @@ const SidebarDrawer = () => {
                                         to={item.path}
                                         selected={
                                             currentActivePath === item.path
-                                                ? true
-                                                : false
                                         }
                                         key={index}
+                                        open={showLinks} // Links will fade in after the sidebar transition
                                     >
                                         <item.icon width={22} height={22} />
                                         {item.name}
@@ -101,7 +142,7 @@ const SidebarDrawer = () => {
                             </div>
                         </div>
                         <div className="side-drawer-products-container">
-                            <p>products</p>
+                            <p>Products</p>
                             <div className="side-drawer-item-list-container">
                                 {SideBarItems?.filter(
                                     (item) => item.type === "product"
@@ -110,10 +151,9 @@ const SidebarDrawer = () => {
                                         to={item.path}
                                         selected={
                                             currentActivePath === item.path
-                                                ? true
-                                                : false
                                         }
                                         key={index}
+                                        open={showLinks}
                                     >
                                         <item.icon width={22} height={22} />
                                         {item.name}
@@ -125,9 +165,14 @@ const SidebarDrawer = () => {
                 ) : (
                     <div className="side-bar-minimized-container">
                         {SideBarItems?.map((item, index) => (
-                            <IconButton key={index}>
-                                <item.icon width={25} height={25} />
-                            </IconButton>
+                            <ToolTip title={item.name} key={index}>
+                                <IconButton
+                                    onClick={() => navigate(item.path)}
+                                    active={currentActivePath === item.path}
+                                >
+                                    <item.icon width={25} height={25} />
+                                </IconButton>
+                            </ToolTip>
                         ))}
                     </div>
                 )}

@@ -5,7 +5,6 @@ import { PageReducer } from "./action/pagereducer";
 
 const initialState = {
     openDrawer: false,
-    noPageStatus: false,
 };
 
 export const PageContext = createContext<

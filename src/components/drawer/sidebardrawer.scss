@@ -5,12 +5,13 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        margin: 0.4rem 0;
         .logo-container {
             display: flex;
             align-items: center;
             gap: 10px;
             cursor: pointer;
-            h3 {
+            p {
                 font-size: 22px;
                 font-weight: $font-weight-bold;
             }
@@ -50,7 +51,7 @@
         .side-drawer-main-menu-container {
             p {
                 margin-left: 14px;
-                font-size: $font-size-small;
+                font-size: 13px;
                 text-transform: uppercase;
                 color: $color-light-text;
             }
@@ -58,7 +59,7 @@
         .side-drawer-products-container {
             p {
                 margin-left: 14px;
-                font-size: $font-size-small;
+                font-size: 13px;
                 text-transform: uppercase;
                 color: $color-light-text;
             }

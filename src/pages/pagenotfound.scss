@@ -4,9 +4,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    user-select: none;
 
     h3 {
-        font-size: 20rem;
+        font-size: 10rem;
         font-weight: $font-weight-bold;
         margin-bottom: -4rem;
     }

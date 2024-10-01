@@ -6,9 +6,12 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     width?: string;
     height?: string;
     bgcolor?: string;
+    active?: boolean;
 }
 const StyledIconButton = styled("button")<ButtonProps>((props) => ({
-    background: props.bgcolor ?? "transparent",
+    background: props.active
+        ? "rgba(15, 96, 255, 0.2)"
+        : props.bgcolor ?? "transparent",
     borderRadius: "50%",
     cursor: "pointer",
     border: 0,

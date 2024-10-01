@@ -1,5 +1,13 @@
+import Card from "../../components/resuable/card";
+
 const Home = () => {
-    return <div>Home</div>;
+    return (
+        <div>
+            <Card>
+                <p>home</p>
+            </Card>
+        </div>
+    );
 };
 
 export default Home;

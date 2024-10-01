@@ -12,8 +12,7 @@ export const PageReducer = (
             return { ...state, openDrawer: true };
         case "CLOSE_DRAWER":
             return { ...state, openDrawer: false };
-        case "NO_PAGE_FOUND_TRIGGER":
-            return { ...state, noPageStatus: action.payload };
+
         default:
             return state;
     }
