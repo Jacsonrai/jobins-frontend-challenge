@@ -4,7 +4,6 @@ export const PageReducer = (
     state: PageState,
     action: PageAction
 ): PageState => {
-    console.log(action, "action");
     switch (action.type) {
         case "TOGGLE_DRAWER":
             return { ...state, openDrawer: !state.openDrawer };

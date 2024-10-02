@@ -8,6 +8,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { SideBarItems } from "./sidebaritem";
 import ToolTip from "../resuable/tooltip";
 import Indenticonright from "../icons/indenticonrighticon";
+import useMediaQuery from "../../hooks/usemediaquery";
 
 interface SidebarProps extends React.HTMLProps<HTMLDivElement> {
     bgcolor?: string;
@@ -55,10 +56,19 @@ const StyledLink = styled(Link).withConfig({
 
 const SidebarDrawer = () => {
     const { state, dispatch } = usePageHook();
+    const { screenWidth } = useMediaQuery();
     const location = useLocation();
     const currentActivePath = location.pathname;
     const navigate = useNavigate();
-    const [showLinks, setShowLinks] = useState(false);
+    const [showLinks, setShowLinks] = useState<boolean>(false);
+    const [hideButton, setHideButton] = useState<boolean>(false);
+    useEffect(() => {
+        if (screenWidth <= 992) {
+            setHideButton(true);
+        } else {
+            setHideButton(false);
+        }
+    }, [screenWidth]);
 
     useEffect(() => {
         let timeout: NodeJS.Timeout;
@@ -109,13 +119,15 @@ const SidebarDrawer = () => {
                                 top: "7px",
                             }}
                         >
-                            <IconButton
-                                type="button"
-                                bgcolor="rgba(255, 255, 255, 1)"
-                                onClick={handleOpenDrawer}
-                            >
-                                <Indenticonright width={24} height={24} />
-                            </IconButton>
+                            {!hideButton && (
+                                <IconButton
+                                    type="button"
+                                    bgcolor="rgba(255, 255, 255, 1)"
+                                    onClick={handleOpenDrawer}
+                                >
+                                    <Indenticonright width={24} height={24} />
+                                </IconButton>
+                            )}
                         </div>
                     )}
                 </div>

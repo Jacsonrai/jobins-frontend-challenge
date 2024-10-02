@@ -1,5 +1,5 @@
 @import "../../assets/styles/abstract/variables";
 @import "../../assets/styles/abstract/mixing";
 .card-content {
-    @include fadeIn(2s, ease-in-out);
+    @include fadeIn(1s, ease-in-out);
 }

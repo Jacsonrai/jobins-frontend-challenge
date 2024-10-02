@@ -1,0 +1,187 @@
+@import "../../assets/styles/abstract/mixing";
+@import "../../assets/styles/abstract/variables";
+
+.dashboard-container {
+    .top-section {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        .top-section-sells {
+            display: flex;
+            align-items: center;
+            height: 150px;
+            padding: 0 20px;
+            gap: 20px;
+            position: relative;
+            .divider {
+                width: 1px;
+                background-color: rgba(219, 218, 222, 1);
+                height: 60%;
+            }
+
+            .sells-details-status {
+                .sells-top-details {
+                    h5 {
+                        font-size: 14px;
+                        font-weight: 600;
+                        margin-bottom: -7px;
+                    }
+                    p {
+                        color: $color-light-text;
+                        font-size: 12px;
+                    }
+                }
+                .sells-bottom-details {
+                    h3 {
+                        font-size: 14px;
+                        margin-bottom: -1px;
+                    }
+                    span {
+                        display: flex;
+                        column-gap: 10px;
+                        color: $color-light-text;
+                        font-size: 12px;
+                        strong {
+                            color: $color-success;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+
+        @include respond-to(sm) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            .top-section-sells {
+                gap: 30px;
+                padding: 0 60px;
+                height: 200px;
+                .sells-icon {
+                    :hover {
+                        cursor: pointer;
+                    }
+                }
+                .sells-details-status {
+                    .sells-top-details {
+                        h5 {
+                            font-size: 18px;
+                            font-weight: 600;
+                            margin-bottom: -10px;
+                        }
+                        p {
+                            color: $color-light-text;
+                            font-size: 14px;
+                        }
+                    }
+                    .sells-bottom-details {
+                        h3 {
+                            font-size: 32px;
+                            margin-bottom: -2px;
+                        }
+                        span {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+        @include respond-to(lg) {
+            display: grid;
+            grid-template-columns: 37% 25% 37%;
+            gap: 10px;
+            .top-section-sells {
+                gap: 40px;
+                padding: 0 40px;
+                .sells-details-status {
+                    .sells-top-details {
+                        h5 {
+                            font-size: 18px;
+                            font-weight: 600;
+                            margin-bottom: -3px;
+                        }
+                        p {
+                            color: $color-light-text;
+                            font-size: 14px;
+                        }
+                    }
+                    .sells-bottom-details {
+                        h3 {
+                            font-size: 32px;
+                            margin-bottom: -1px;
+                        }
+                        span {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+        .top-profit-section {
+            height: 120px;
+            padding: 10px 20px;
+            .top-profit-icon-title-section {
+                display: flex;
+                gap: 30px;
+                .top-profit-title-section {
+                    margin-top: -1rem;
+                    h5 {
+                        font-size: 14px;
+                        font-weight: 600;
+                        margin-bottom: -0.7rem;
+                    }
+                    p {
+                        color: $color-light-text;
+                        font-size: 12px;
+                    }
+                }
+            }
+            .top-profit-bottom-details {
+                h3 {
+                    font-size: 18px;
+                    font-weight: 700;
+                    margin-bottom: -0.5rem;
+                }
+                span {
+                    display: flex;
+                    column-gap: 10px;
+                    color: $color-light-text;
+                    font-size: 12px;
+                    strong {
+                        color: $color-success;
+                        font-weight: 500;
+                    }
+                }
+            }
+            @include respond-to(sm) {
+                height: 170px;
+                padding: 15px 20px;
+                .top-profit-icon-title-section {
+                    .top-profit-title-section {
+                        margin-top: -1.6rem;
+                        h5 {
+                            font-size: 18px;
+                            font-weight: 600;
+                            margin-bottom: -0.8rem;
+                        }
+                        p {
+                            color: $color-light-text;
+                            font-size: 14px;
+                        }
+                    }
+                }
+                .top-profit-bottom-details {
+                    h3 {
+                        font-size: 32px;
+                        font-weight: 700;
+                        margin-bottom: -0.1rem;
+                    }
+                    span {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
