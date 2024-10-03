@@ -1,0 +1,87 @@
+@import "../../assets/styles/abstract/mixing";
+@import "../../assets/styles/abstract/variables";
+
+.table-main-container {
+    @include fadeIn(1s, ease-in-out);
+    .table-filter-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+        .table-filter-left-section {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+    }
+    .table-body-content {
+        margin-top: 2rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        width: 100%;
+        table {
+            width: 100%;
+            background-color: white;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            border-collapse: separate;
+            border-spacing: 0;
+            thead {
+                tr {
+                    th {
+                        border-bottom: 1px solid rgba(233, 231, 253, 1);
+                        min-width: 155px;
+                        text-align: left;
+                        font-weight: $font-weight-normal;
+                        font-size: 15px;
+                        color: $color-light-text;
+                        padding: 25px 20px 16px 30px;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    padding: 0 24px 0 16px;
+                    td {
+                        // padding: 20px 20px 20px 30px;
+                        padding: 5px 20px 5px 30px;
+                        border-bottom: 1px solid rgba(233, 231, 253, 1);
+                        min-width: 155px;
+                        text-align: left;
+                        font-weight: $font-weight-normal;
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+    }
+    .footer-table-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: space-between;
+        padding: 16px 24px;
+        background-color: $color-white;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+        .page-size-select-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            p {
+                font-size: 15px;
+                font-weight: $font-weight-normal;
+                color: $color-light-text;
+                text-wrap: nowrap;
+            }
+        }
+        @include respond-to(sm) {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+        }
+    }
+}

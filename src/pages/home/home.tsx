@@ -2,8 +2,33 @@ import AnalyticIcon from "../../components/icons/analyticicon";
 import YenIcon from "../../components/icons/yenicon";
 import Card from "../../components/resuable/card";
 import Progressbar from "../../components/resuable/progressbar";
+import Table from "../../components/resuable/table";
 import "./home.scss";
+import type { Column } from "../../components/resuable/table";
+import { StatusChecker } from "../../helper/helper";
+import type { Customer } from "../../type/other";
+import { customerData } from "../../dummydata/dummydata";
 const Home = () => {
+    const columns: Column<Customer>[] = [
+        { header: "ID", accessor: "id" },
+        { header: "Customer", accessor: "customer" },
+        { header: "Date", accessor: "date" },
+        { header: "Total", accessor: "total" },
+        { header: "Method", accessor: "method" },
+        {
+            header: "Status",
+            accessor: (row) => (
+                <p
+                    style={{
+                        color: StatusChecker(row.status.toLowerCase()),
+                    }}
+                >
+                    {row.status}
+                </p>
+            ),
+        },
+    ];
+
     return (
         <div className="container dashboard-container">
             <div className="top-section">
@@ -73,9 +98,7 @@ const Home = () => {
                 </Card>
             </div>
             <div className="bottom-section">
-                <Card>
-                    <p>home</p>
-                </Card>
+                <Table data={customerData} columns={columns} enableAction />
             </div>
         </div>
     );

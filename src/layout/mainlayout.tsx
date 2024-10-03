@@ -11,7 +11,7 @@ const StyledMainLayout = styled("div").withConfig({
 })<StyledMainLayoutProps>((props) => ({
     marginLeft: props.width ?? "20rem",
     position: "relative",
-    height: "100vh",
+    minHeight: "100vh",
     background: "#f5f5f5",
 }));
 
