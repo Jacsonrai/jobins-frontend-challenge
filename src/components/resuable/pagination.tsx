@@ -1,11 +1,9 @@
-import { useState } from "react";
 import styled from "styled-components";
 
 const PaginationContainer = styled.div`
     display: flex;
     list-style: none;
     justify-content: center;
-    //     padding: 10px;
 `;
 
 const PageNumber = styled.button<{ active?: boolean }>`
