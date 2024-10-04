@@ -4,7 +4,7 @@ import IconButton from "../resuable/iconbutton";
 import "./appbar.scss";
 const AppBar = () => {
     return (
-        <div className="container app-bar-container">
+        <div className="app-bar-container">
             <div className="page-title-container">
                 <p>Dashboard</p>
             </div>

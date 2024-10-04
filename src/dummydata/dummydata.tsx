@@ -1,4 +1,7 @@
-import type { Customer } from "../type/other";
+import AuIcon from "../components/icons/AuIcon";
+import BrazilIcon from "../components/icons/brazilicon";
+import UsaFlagIcon from "../components/icons/usaflagicon";
+import type { CountryProgressData, Customer } from "../type/other";
 export const customerData: Customer[] = [
     {
         id: "#5089",
@@ -55,5 +58,26 @@ export const customerData: Customer[] = [
         total: 1500,
         method: "Cash",
         status: "Completed",
+    },
+];
+
+export const countryProgressData: CountryProgressData[] = [
+    {
+        quantity: "30k",
+        country: "United States",
+        percent: 25.8,
+        icon: UsaFlagIcon,
+    },
+    {
+        quantity: "26k",
+        country: "Brazil",
+        percent: 16.2,
+        icon: BrazilIcon,
+    },
+    {
+        quantity: "17k",
+        country: "Australia",
+        percent: 11.9,
+        icon: AuIcon,
     },
 ];

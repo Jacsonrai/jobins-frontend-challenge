@@ -2,6 +2,7 @@
 @import "../../assets/styles/abstract/variables";
 
 .dashboard-container {
+    padding-bottom: 1rem;
     .top-section {
         display: grid;
         grid-template-columns: 1fr;
@@ -179,6 +180,464 @@
                     }
                     span {
                         font-size: 14px;
+                    }
+                }
+            }
+        }
+        .top-main-progress-section {
+            padding: 20px 20px;
+            .top-progress-section {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                // border: 1px solid red;
+                .progress-flag-container {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.3rem;
+                    margin-right: 0.2rem;
+                    // border: 1px solid red;
+                    .progress-flag-details {
+                        h5 {
+                            font-size: 12px;
+                            font-weight: $font-weight-normal;
+                            margin-bottom: -0.2rem;
+                        }
+                        p {
+                            font-size: 8px;
+                            font-weight: $font-weight-light;
+                            color: $color-light-text;
+                        }
+                    }
+                }
+                .progress-flag-percentage {
+                    margin-left: 0.5rem;
+                }
+            }
+            @include respond-to(sm) {
+                .top-progress-section {
+                    .progress-flag-container {
+                        margin-top: -1rem;
+
+                        .progress-flag-details {
+                            h5 {
+                                font-size: 16px;
+                                font-weight: $font-weight-normal;
+                                margin-bottom: -0.8rem;
+                            }
+                            p {
+                                font-size: 12px;
+                                font-weight: $font-weight-light;
+                                text-wrap: nowrap;
+                            }
+                        }
+                    }
+                    .progress-flag-percentage {
+                        margin-left: 0.5rem;
+                    }
+                }
+            }
+        }
+    }
+    .middle-section {
+        margin: 1rem 0;
+
+        .personal-details-section {
+            padding: 10px;
+            display: grid;
+            grid-template-columns: 1fr;
+            position: relative;
+
+            .personal-details-left-section {
+                .personal-profile-section {
+                    display: flex;
+                    align-items: center;
+                    column-gap: 15px;
+                    padding-top: 40px;
+                    padding-left: 20px;
+                    h6 {
+                        font-size: 18px;
+                        font-weight: 600;
+                        color: $color-text;
+                        margin-top: 1rem;
+                    }
+                    p {
+                        margin-top: -2.5rem;
+                        color: $color-light-text;
+                        font-size: 15px;
+                    }
+                    .circle {
+                        height: 58px;
+                        width: 58px;
+                        background-color: $color-light-purple;
+                        border-radius: 100%;
+                        border: 6px solid $color-purple;
+                    }
+                }
+            }
+            .personal-details-middle-section {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                margin-top: 0.5rem;
+                .divider {
+                    width: 1px;
+                    background-color: rgba(219, 218, 222, 1);
+                    height: 90%;
+                }
+                .personal-info-section {
+                    margin-left: 2rem;
+                    width: 100%;
+                    h6 {
+                        font-size: 13px;
+                        font-weight: 500;
+                        color: $color-light-text;
+                        text-transform: uppercase;
+                        margin-bottom: 0.5rem;
+                        margin-top: 1rem;
+                    }
+                    .contact-container {
+                        display: flex;
+                        align-items: center;
+                        column-gap: 60px;
+                        p {
+                            font-size: 14px;
+                            font-weight: 400;
+                            text-transform: capitalize;
+                            color: $color-text;
+                            margin-bottom: 0.2rem;
+                        }
+                    }
+                    .date-container {
+                        display: flex;
+                        align-items: center;
+                        column-gap: 80px;
+                        p {
+                            font-size: 14px;
+                            font-weight: 400;
+                            text-transform: capitalize;
+                            color: $color-text;
+                            margin-bottom: 0.2rem;
+                        }
+                    }
+                    .member-container {
+                        display: flex;
+                        align-items: center;
+                        column-gap: 70px;
+                        p {
+                            font-size: 14px;
+                            font-weight: 400;
+                            text-transform: capitalize;
+                            color: $color-text;
+                            margin-bottom: 0.2rem;
+                        }
+                    }
+                }
+            }
+            .personal-shipping-section {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                margin-top: 1rem;
+                .divider {
+                    width: 1px;
+                    background-color: rgba(219, 218, 222, 1);
+                    height: 90%;
+                }
+                .shipping-address-section {
+                    margin-left: 2rem;
+                    width: 100%;
+                    h6 {
+                        font-size: 13px;
+                        font-weight: 500;
+                        color: $color-light-text;
+                        text-transform: uppercase;
+                        margin-bottom: 1.2rem;
+                        margin-top: 0.5rem;
+                    }
+                    p {
+                        font-size: 14px;
+                        font-weight: 400;
+                        text-transform: capitalize;
+                        color: $color-text;
+                    }
+                    .total-count-main-container {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin-top: -1.4rem;
+                        .total-count-container {
+                            h4 {
+                                font-size: 24px;
+                                font-weight: 700;
+                                margin-bottom: -0.3rem;
+                            }
+                            p {
+                                font-size: 13px;
+                                font-weight: 500;
+                                color: $color-light-text;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @include respond-to("md") {
+            .personal-details-section {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                position: relative;
+
+                .personal-details-left-section {
+                    .personal-profile-section {
+                        padding-top: 10px;
+                        padding-left: 20px;
+                    }
+                }
+                .personal-details-middle-section {
+                    .personal-info-section {
+                        margin-left: 1rem;
+                        h6 {
+                            margin-bottom: 0.2rem;
+                            margin-top: 0.2rem;
+                        }
+                        .contact-container {
+                            column-gap: 40px;
+                        }
+                        .date-container {
+                            column-gap: 62px;
+                            p {
+                                margin-bottom: 0.2rem;
+                            }
+                        }
+                        .member-container {
+                            column-gap: 52px;
+                            p {
+                                margin-bottom: 0.2rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @include respond-to("lg") {
+            .personal-details-section {
+                grid-template-columns: 1fr 1fr 1fr;
+
+                .personal-details-left-section {
+                    .personal-profile-section {
+                        padding-top: 40px;
+                        padding-left: 20px;
+                    }
+                }
+                .personal-details-middle-section {
+                    .personal-info-section {
+                        h6 {
+                            margin-bottom: 0.2rem;
+                            margin-top: 0.3rem;
+                        }
+                        .contact-container {
+                            column-gap: 20px;
+                        }
+                        .date-container {
+                            column-gap: 42px;
+                        }
+                        .member-container {
+                            column-gap: 33px;
+                            p {
+                                font-size: 14px;
+                                font-weight: 400;
+                                text-transform: capitalize;
+                                color: $color-text;
+                                margin-bottom: 0.2rem;
+                            }
+                        }
+                    }
+                }
+                .personal-shipping-section {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    .divider {
+                        width: 1px;
+                        background-color: rgba(219, 218, 222, 1);
+                        height: 90%;
+                    }
+                    .shipping-address-section {
+                        margin-left: 2rem;
+                        width: 100%;
+                        h6 {
+                            font-size: 13px;
+                            font-weight: 500;
+                            color: $color-light-text;
+                            text-transform: uppercase;
+                            margin-bottom: 1.2rem;
+                            margin-top: 0.5rem;
+                        }
+                        p {
+                            font-size: 14px;
+                            font-weight: 400;
+                            text-transform: capitalize;
+                            color: $color-text;
+                        }
+                        .total-count-main-container {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            margin-top: -1.4rem;
+                            .total-count-container {
+                                h4 {
+                                    font-size: 24px;
+                                    font-weight: 700;
+                                    margin-bottom: -0.3rem;
+                                }
+                                p {
+                                    font-size: 13px;
+                                    font-weight: 500;
+                                    color: $color-light-text;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @include respond-to("xl") {
+            .personal-details-section {
+                padding: 10px;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                position: relative;
+
+                .personal-details-left-section {
+                    .personal-profile-section {
+                        display: flex;
+                        align-items: center;
+                        column-gap: 15px;
+                        padding-top: 40px;
+                        padding-left: 20px;
+                        h6 {
+                            font-size: 18px;
+                            font-weight: 600;
+                            color: $color-text;
+                            margin-top: 1rem;
+                        }
+                        p {
+                            margin-top: -2.5rem;
+                            color: $color-light-text;
+                            font-size: 15px;
+                        }
+                        .circle {
+                            height: 58px;
+                            width: 58px;
+                            background-color: $color-light-purple;
+                            border-radius: 100%;
+                            border: 6px solid $color-purple;
+                        }
+                    }
+                }
+                .personal-details-middle-section {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    .divider {
+                        width: 1px;
+                        background-color: rgba(219, 218, 222, 1);
+                        height: 90%;
+                    }
+                    .personal-info-section {
+                        margin-left: 2rem;
+                        width: 100%;
+                        h6 {
+                            font-size: 13px;
+                            font-weight: 500;
+                            color: $color-light-text;
+                            text-transform: uppercase;
+                            margin-bottom: 1rem;
+                            margin-top: -0.2rem;
+                        }
+                        .contact-container {
+                            display: flex;
+                            align-items: center;
+                            column-gap: 60px;
+                            p {
+                                font-size: 14px;
+                                font-weight: 400;
+                                text-transform: capitalize;
+                                color: $color-text;
+                                margin-bottom: 0.2rem;
+                            }
+                        }
+                        .date-container {
+                            display: flex;
+                            align-items: center;
+                            column-gap: 80px;
+                            p {
+                                font-size: 14px;
+                                font-weight: 400;
+                                text-transform: capitalize;
+                                color: $color-text;
+                                margin-bottom: 0.2rem;
+                            }
+                        }
+                        .member-container {
+                            display: flex;
+                            align-items: center;
+                            column-gap: 70px;
+                            p {
+                                font-size: 14px;
+                                font-weight: 400;
+                                text-transform: capitalize;
+                                color: $color-text;
+                                margin-bottom: 0.2rem;
+                            }
+                        }
+                    }
+                }
+                .personal-shipping-section {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    .divider {
+                        width: 1px;
+                        background-color: rgba(219, 218, 222, 1);
+                        height: 90%;
+                    }
+                    .shipping-address-section {
+                        margin-left: 2rem;
+                        width: 100%;
+                        h6 {
+                            font-size: 13px;
+                            font-weight: 500;
+                            color: $color-light-text;
+                            text-transform: uppercase;
+                            margin-bottom: 1.2rem;
+                            margin-top: 0.5rem;
+                        }
+                        p {
+                            font-size: 14px;
+                            font-weight: 400;
+                            text-transform: capitalize;
+                            color: $color-text;
+                        }
+                        .total-count-main-container {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            margin-top: -1.4rem;
+                            .total-count-container {
+                                h4 {
+                                    font-size: 24px;
+                                    font-weight: 700;
+                                    margin-bottom: -0.3rem;
+                                }
+                                p {
+                                    font-size: 13px;
+                                    font-weight: 500;
+                                    color: $color-light-text;
+                                }
+                            }
+                        }
                     }
                 }
             }

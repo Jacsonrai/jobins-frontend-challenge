@@ -2,12 +2,12 @@
 @import "../../assets/styles/abstract/mixing";
 
 .app-bar-container {
-    padding-top: 26px;
     display: flex;
     align-items: center;
     background-color: transparent;
     position: sticky;
     gap: 20px;
+    padding: 26px 25px 0 25px;
     .page-title-container {
         flex-grow: 1;
         p {

@@ -23,3 +23,9 @@ export interface Customer {
     method: string;
     status: string;
 }
+export interface CountryProgressData {
+    quantity: string;
+    country: string;
+    percent: number;
+    icon: React.ComponentType<IconProps>;
+}
